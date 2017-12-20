@@ -1,5 +1,8 @@
 <ul class="list-group">
   <li class="list-group-item">
-    <%= link("Record initial contact", to: initial_contacts_path(@conn, :new)) %>
+    <%= link("Record initial contact", to: initial_contact_path(@conn, :new)) %>
+  </li>
+  <li class="list-group-item">
+    <%= link("List your comrades", to: comrade_path(@conn, :index)) %>
   </li>
 </ul>

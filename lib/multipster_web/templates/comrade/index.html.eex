@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Context</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for comrade <- @comrades do %>
+        <tr>
+          <td><%= comrade.name %></td>
+          <td><%= comrade.context %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

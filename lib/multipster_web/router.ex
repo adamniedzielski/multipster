@@ -17,7 +17,8 @@ defmodule MultipsterWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/initial_contacts", InitialContactsController, only: [:new]
+    resources "/initial_contacts", InitialContactController, only: [:new, :create]
+    resources "/comrades", ComradeController, only: [:index]
   end
 
   # Other scopes may use custom stacks.
