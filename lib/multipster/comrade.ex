@@ -1,8 +1,11 @@
 defmodule Multipster.Comrade do
+  @moduledoc """
+  Central model in the application that represents the person you have a
+  relation with.
+  """
   use Ecto.Schema
   import Ecto.Changeset
   alias Multipster.Comrade
-
 
   schema "comrades" do
     field :context, :string

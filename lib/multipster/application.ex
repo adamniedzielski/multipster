@@ -1,4 +1,7 @@
 defmodule Multipster.Application do
+  @moduledoc false
+
+  alias MultipsterWeb.Endpoint
   use Application
 
   # See https://hexdocs.pm/elixir/Application.html
@@ -12,8 +15,6 @@ defmodule Multipster.Application do
       supervisor(Multipster.Repo, []),
       # Start the endpoint when the application starts
       supervisor(MultipsterWeb.Endpoint, []),
-      # Start your own worker by calling: Multipster.Worker.start_link(arg1, arg2, arg3)
-      # worker(Multipster.Worker, [arg1, arg2, arg3]),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -25,7 +26,7 @@ defmodule Multipster.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    MultipsterWeb.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end
