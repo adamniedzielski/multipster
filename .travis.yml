@@ -1,0 +1,8 @@
+language: elixir
+addons:
+  chrome: stable
+  postgresql: "9.6"
+elixir: "1.5.3"
+otp_release: "20.1"
+services:
+  - postgresql

@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :multipster, Multipster.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "multipster_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

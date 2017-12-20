@@ -52,7 +52,7 @@ config :phoenix, :stacktrace_depth, 20
 config :multipster, Multipster.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "multipster_dev",
   hostname: "localhost",
   pool_size: 10
