@@ -19,6 +19,7 @@ defmodule MultipsterWeb.Router do
     get "/", PageController, :index
     resources "/initial_contacts", InitialContactController, only: [:new, :create]
     resources "/comrades", ComradeController, only: [:index]
+    resources "/accounts", AccountController, only: [:new, :create]
   end
 
   # Other scopes may use custom stacks.
