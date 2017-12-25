@@ -42,7 +42,10 @@ defmodule Multipster.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:wallaby, "~> 0.19", only: :test},
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false}
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:bamboo, "~> 0.8"},
+      {:jose, "~> 1.8"},
+      {:poison, "~> 3.1"}
     ]
   end
 

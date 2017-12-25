@@ -3,7 +3,12 @@ defmodule Multipster.RecordContactTest do
   import Wallaby.Query
 
   test "record initial contact", %{session: session} do
+    user = Repo.insert!(%Multipster.User{email: "test@example.com"})
+    token = MultipsterWeb.SignIn.Token.encode(user)
+
     session
+    |> visit("sessions/new?token=#{token}")
+    |> assert_has(Query.text("You have successfully signed in."))
     |> visit("/initial_contacts/new")
     |> fill_in(Query.text_field("Name"), with: "Chris")
     |> fill_in(Query.text_field("Context"), with: "Elixir meetup")

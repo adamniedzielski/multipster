@@ -20,3 +20,6 @@ config :multipster, Multipster.Repo,
 
 config :wallaby,
   driver: Wallaby.Experimental.Chrome
+
+config :multipster, MultipsterWeb.Mailer,
+  adapter: Bamboo.TestAdapter

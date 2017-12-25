@@ -1,0 +1,4 @@
+<p>
+  Please use this link to sign in to the application:
+  <%= link("click here", to: session_url(MultipsterWeb.Endpoint, :new, token: @token)) %>
+</p>
