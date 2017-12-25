@@ -25,6 +25,9 @@ config :logger, :console,
 config :multipster, MultipsterWeb.Mailer,
   adapter: Bamboo.LocalAdapter
 
+config :multipster, Multipster.CurrentTime,
+  adapter: Multipster.CurrentTime.Real
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

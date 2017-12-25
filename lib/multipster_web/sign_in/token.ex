@@ -6,20 +6,23 @@ defmodule MultipsterWeb.SignIn.Token do
   alias JOSE.JWS
   alias JOSE.JWK
   alias MultipsterWeb.Endpoint
+  alias Multipster.CurrentTime
 
   def encode(user) do
     {_, token} =
       key()
-      |> JWT.sign(signature(), %{"user_id" => user.id})
+      |> JWT.sign(signature(), %{"user_id" => user.id, "exp" => get_expiration()})
       |> JWS.compact()
 
     token
   end
 
   def decode(token) do
-    case JWT.verify(key(), token) do
-      {true, %JWT{fields: %{"user_id" => user_id}}, _} ->
-        {:ok, user_id}
+    with {true, %JWT{fields: claims}, _} <- JWT.verify(key(), token),
+         %{"user_id" => user_id, "exp" => exp} <- claims,
+         true <- verify_expiration(exp) do
+      {:ok, user_id}
+    else
       _ ->
         {:error, ""}
     end
@@ -33,5 +36,17 @@ defmodule MultipsterWeb.SignIn.Token do
 
   defp signature do
     %{"alg" => "HS512"}
+  end
+
+  defp verify_expiration(expiration) do
+    expiration > current_timestamp()
+  end
+
+  defp get_expiration do
+    current_timestamp() + 30 * 60
+  end
+
+  defp current_timestamp do
+    CurrentTime.get_timestamp()
   end
 end

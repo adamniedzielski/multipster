@@ -23,3 +23,6 @@ config :wallaby,
 
 config :multipster, MultipsterWeb.Mailer,
   adapter: Bamboo.TestAdapter
+
+config :multipster, Multipster.CurrentTime,
+  adapter: Multipster.CurrentTime.Mock

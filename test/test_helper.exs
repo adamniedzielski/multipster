@@ -1,4 +1,5 @@
 {:ok, _} = Application.ensure_all_started(:wallaby)
+{:ok, _} = Multipster.CurrentTime.Mock.start_link()
 ExUnit.start()
 
 Ecto.Adapters.SQL.Sandbox.mode(Multipster.Repo, :manual)

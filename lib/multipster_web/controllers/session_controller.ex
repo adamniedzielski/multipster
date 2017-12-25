@@ -11,7 +11,7 @@ defmodule MultipsterWeb.SessionController do
         |> redirect(to: page_path(conn, :index))
       _ ->
         conn
-        |> put_flash(:info, "Something is wrong with your sign in link. Please try again.")
+        |> put_flash(:error, "Something is wrong with your sign in link. Please try again.")
         |> redirect(to: sign_in_link_path(conn, :new))
     end
   end
