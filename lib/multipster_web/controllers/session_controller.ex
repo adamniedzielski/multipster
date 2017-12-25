@@ -15,4 +15,11 @@ defmodule MultipsterWeb.SessionController do
         |> redirect(to: sign_in_link_path(conn, :new))
     end
   end
+
+  def delete(conn, _params) do
+    conn
+    |> delete_session(:user_id)
+    |> put_flash(:info, "You have successfully signed out.")
+    |> redirect(to: sign_in_link_path(conn, :new))
+  end
 end

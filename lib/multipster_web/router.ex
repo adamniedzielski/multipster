@@ -34,7 +34,8 @@ defmodule MultipsterWeb.Router do
 
     resources "/accounts", AccountController, only: [:new, :create]
     resources "/sign_in_links", SignInLinkController, only: [:new, :create]
-    resources "/sessions", SessionController, only: [:new]
+    get "/sessions/new", SessionController, :new
+    delete "/sessions", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.

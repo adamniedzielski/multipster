@@ -18,6 +18,19 @@
         <p>
           stay in touch with all your comrades
         <p>
+        <p>
+          <%= if assigns[:current_user] do %>
+            Signed in as
+            <strong>
+              <%= @current_user.email %>
+            </strong>
+            <%= link("Sign out", to: session_path(@conn, :delete), method: :delete) %>
+          <% else %>
+            <%= link("Sign in", to: sign_in_link_path(@conn, :new)) %>
+            |
+            <%= link("Register", to: account_path(@conn, :new)) %>
+          <% end %>
+        </p>
       </header>
       <%= if get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert">
