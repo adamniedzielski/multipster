@@ -1,10 +1,12 @@
 defmodule MultipsterWeb.ComradeController do
-  alias Multipster.Comrade
   alias Multipster.Repo
   use MultipsterWeb, :controller
 
   def index(conn, _params) do
-    comrades = Repo.all(Comrade)
+    comrades =
+      conn.assigns[:current_user]
+      |> Repo.preload(:comrades)
+      |> Map.fetch!(:comrades)
     render(conn, "index.html", comrades: comrades)
   end
 end

@@ -9,7 +9,8 @@ defmodule MultipsterWeb.InitialContactController do
   end
 
   def create(conn, %{"comrade" => comrade_params}) do
-    changeset = Comrade.changeset(%Comrade{}, comrade_params)
+    comrade = Ecto.build_assoc(conn.assigns[:current_user], :comrades)
+    changeset = Comrade.changeset(comrade, comrade_params)
 
     case Repo.insert(changeset) do
       {:ok, _} ->

@@ -8,6 +8,7 @@ defmodule Multipster.Comrade do
   alias Multipster.Comrade
 
   schema "comrades" do
+    belongs_to :user, Multipster.User
     field :context, :string
     field :name, :string
 
@@ -18,6 +19,6 @@ defmodule Multipster.Comrade do
   def changeset(%Comrade{} = comrade, attrs) do
     comrade
     |> cast(attrs, [:name, :context])
-    |> validate_required([:name])
+    |> validate_required([:name, :user_id])
   end
 end
