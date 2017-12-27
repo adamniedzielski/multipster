@@ -12,12 +12,13 @@ defmodule MultipsterWeb.SignIn.Plug do
 
   def call(conn, _options) do
     with user_id when not is_nil(user_id) <- get_session(conn, :user_id),
-         user when not is_nil(user) <- Repo.get(User, user_id) do
+         user when not is_nil(user) <- Repo.get(User, user_id)
+    do
       assign(conn, :current_user, user)
     else
       _ ->
         conn
-        |> Controller.put_flash(:error, "You have to sign to access this page.")
+        |> Controller.put_flash(:error, "You have to sign in to access this page.")
         |> Controller.redirect(to: "/sign_in_links/new")
         |> halt
     end
