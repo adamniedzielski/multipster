@@ -38,7 +38,8 @@ defmodule MultipsterWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_multipster_key",
-    signing_salt: "x0DETeTj"
+    signing_salt: "x0DETeTj",
+    max_age: 365 * 24 * 60 * 60
 
   plug MultipsterWeb.Router
 
