@@ -7,7 +7,7 @@ defmodule MultipsterWeb.Email do
   def sign_in_link(receiver, token) do
     new_email()
     |> to(receiver)
-    |> from("multipster@multipster.test")
+    |> from("noreply@multipster.herokuapp.com")
     |> subject("Sign in to Multipster")
     |> assign(:token, token)
     |> render("sign_in_link.html")

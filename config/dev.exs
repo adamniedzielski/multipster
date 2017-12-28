@@ -56,3 +56,7 @@ config :multipster, Multipster.Repo,
   database: "multipster_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :multipster, MultipsterWeb.Mailer,
+  adapter: Bamboo.LocalAdapter
+

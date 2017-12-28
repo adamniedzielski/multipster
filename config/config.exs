@@ -22,9 +22,6 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :multipster, MultipsterWeb.Mailer,
-  adapter: Bamboo.LocalAdapter
-
 config :multipster, Multipster.CurrentTime,
   adapter: Multipster.CurrentTime.Real
 

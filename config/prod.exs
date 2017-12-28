@@ -26,6 +26,10 @@ config :multipster, Multipster.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
 
+config :multipster, MultipsterWeb.Mailer,
+  adapter: Bamboo.SendgridAdapter,
+  api_key: Map.fetch!(System.get_env(), "SENDGRID_API_KEY")
+
 # Do not print debug messages in production
 config :logger, level: :info
 
