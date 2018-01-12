@@ -17,9 +17,8 @@ defmodule MultipsterWeb.SignIn.TokenTest do
     token = Token.encode(%Multipster.User{id: 4})
 
     Multipster.CurrentTime.Mock.freeze(:os.system_time(:second) + 31 * 60)
+    on_exit &Multipster.CurrentTime.Mock.unfreeze/0
 
     {:error, _} = Token.decode(token)
-
-    Multipster.CurrentTime.Mock.unfreeze()
   end
 end
