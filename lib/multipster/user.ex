@@ -8,8 +8,8 @@ defmodule Multipster.User do
   alias Multipster.User
 
   schema "users" do
-    has_many :comrades, Multipster.Comrade
-    field :email, EmailType
+    has_many(:comrades, Multipster.Comrade)
+    field(:email, EmailType)
 
     timestamps()
   end

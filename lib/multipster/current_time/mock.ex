@@ -6,9 +6,12 @@ defmodule Multipster.CurrentTime.Mock do
   use Agent
 
   def start_link do
-    Agent.start_link(fn ->
-      %{is_frozen: false, frozen_value: nil}
-    end, name: __MODULE__)
+    Agent.start_link(
+      fn ->
+        %{is_frozen: false, frozen_value: nil}
+      end,
+      name: __MODULE__
+    )
   end
 
   def get_timestamp do

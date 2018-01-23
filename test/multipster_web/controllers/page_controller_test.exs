@@ -4,7 +4,7 @@ defmodule MultipsterWeb.PageControllerTest do
 
   describe "unauthenticated request" do
     test "redirect user to sign in page", %{conn: conn} do
-      conn = get conn, page_path(conn, :index)
+      conn = get(conn, page_path(conn, :index))
 
       assert redirected_to(conn) =~ "/sign_in_links/new"
     end

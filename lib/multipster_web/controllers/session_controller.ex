@@ -9,6 +9,7 @@ defmodule MultipsterWeb.SessionController do
         |> put_session(:user_id, user_id)
         |> put_flash(:info, "You have successfully signed in.")
         |> redirect(to: page_path(conn, :index))
+
       _ ->
         conn
         |> put_flash(:error, "Something is wrong with your sign in link. Please try again.")

@@ -19,6 +19,7 @@ defmodule MultipsterWeb.AccountController do
         conn
         |> put_flash(:info, "Account created successfully. Please check your mailbox.")
         |> redirect(to: sign_in_link_path(conn, :new))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

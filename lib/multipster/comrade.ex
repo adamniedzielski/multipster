@@ -8,9 +8,9 @@ defmodule Multipster.Comrade do
   alias Multipster.Comrade
 
   schema "comrades" do
-    belongs_to :user, Multipster.User
-    field :context, :string
-    field :name, :string
+    belongs_to(:user, Multipster.User)
+    field(:context, :string)
+    field(:name, :string)
 
     timestamps()
   end

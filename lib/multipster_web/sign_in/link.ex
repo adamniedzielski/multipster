@@ -13,7 +13,7 @@ defmodule MultipsterWeb.SignIn.Link do
 
     user.email
     |> Email.sign_in_link(token)
-    |> Mailer.deliver_later
+    |> Mailer.deliver_later()
   end
 
   def send_to_address(address) do

@@ -30,8 +30,8 @@ defmodule MultipsterWeb.SignIn.Token do
 
   defp key do
     :secret_key_base
-    |> Endpoint.config
-    |> JWK.from_oct
+    |> Endpoint.config()
+    |> JWK.from_oct()
   end
 
   defp signature do

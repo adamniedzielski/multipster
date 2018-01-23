@@ -12,8 +12,7 @@ defmodule MultipsterWeb.SignIn.Plug do
 
   def call(conn, _options) do
     with user_id when not is_nil(user_id) <- get_session(conn, :user_id),
-         user when not is_nil(user) <- Repo.get(User, user_id)
-    do
+         user when not is_nil(user) <- Repo.get(User, user_id) do
       assign(conn, :current_user, user)
     else
       _ ->

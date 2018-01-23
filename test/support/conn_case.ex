@@ -26,13 +26,13 @@ defmodule MultipsterWeb.ConnCase do
     end
   end
 
-
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Multipster.Repo)
+
     unless tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(Multipster.Repo, {:shared, self()})
     end
+
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
-
 end

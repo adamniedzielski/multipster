@@ -7,6 +7,7 @@ defmodule MultipsterWeb.ComradeController do
       conn.assigns[:current_user]
       |> Repo.preload(:comrades)
       |> Map.fetch!(:comrades)
+
     render(conn, "index.html", comrades: comrades)
   end
 end

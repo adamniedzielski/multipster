@@ -5,7 +5,7 @@ defmodule MultipsterWeb.SessionControllerTest do
   test "set session cookie when signing in as a user", %{conn: conn} do
     token = MultipsterWeb.SignIn.Token.encode(%Multipster.User{id: 2})
 
-    conn = get conn, session_path(conn, :new, token: token)
+    conn = get(conn, session_path(conn, :new, token: token))
 
     assert get_session(conn, :user_id) == 2
   end

@@ -14,7 +14,7 @@ defmodule Multipster.Application do
       # Start the Ecto repository
       supervisor(Multipster.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(MultipsterWeb.Endpoint, []),
+      supervisor(MultipsterWeb.Endpoint, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

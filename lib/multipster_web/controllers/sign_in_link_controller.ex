@@ -19,6 +19,7 @@ defmodule MultipsterWeb.SignInLinkController do
         conn
         |> put_flash(:info, "Sign in link sent to your mailbox.")
         |> redirect(to: sign_in_link_path(conn, :new))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end

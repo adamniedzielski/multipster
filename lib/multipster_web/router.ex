@@ -2,40 +2,40 @@ defmodule MultipsterWeb.Router do
   use MultipsterWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   pipeline :require_authentication do
-    plug MultipsterWeb.SignIn.Plug
+    plug(MultipsterWeb.SignIn.Plug)
   end
 
-  if Mix.env == :dev do
-    forward "/sent_emails", Bamboo.EmailPreviewPlug
-  end
-
-  scope "/", MultipsterWeb do
-    pipe_through [:browser, :require_authentication]
-
-    get "/", PageController, :index
-    resources "/initial_contacts", InitialContactController, only: [:new, :create]
-    resources "/comrades", ComradeController, only: [:index]
+  if Mix.env() == :dev do
+    forward("/sent_emails", Bamboo.EmailPreviewPlug)
   end
 
   scope "/", MultipsterWeb do
-    pipe_through :browser
+    pipe_through([:browser, :require_authentication])
 
-    resources "/accounts", AccountController, only: [:new, :create]
-    resources "/sign_in_links", SignInLinkController, only: [:new, :create]
-    get "/sessions/new", SessionController, :new
-    delete "/sessions", SessionController, :delete
+    get("/", PageController, :index)
+    resources("/initial_contacts", InitialContactController, only: [:new, :create])
+    resources("/comrades", ComradeController, only: [:index])
+  end
+
+  scope "/", MultipsterWeb do
+    pipe_through(:browser)
+
+    resources("/accounts", AccountController, only: [:new, :create])
+    resources("/sign_in_links", SignInLinkController, only: [:new, :create])
+    get("/sessions/new", SessionController, :new)
+    delete("/sessions", SessionController, :delete)
   end
 
   # Other scopes may use custom stacks.

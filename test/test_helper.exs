@@ -3,4 +3,4 @@
 ExUnit.start()
 
 Ecto.Adapters.SQL.Sandbox.mode(Multipster.Repo, :manual)
-Application.put_env(:wallaby, :base_url, MultipsterWeb.Endpoint.url)
+Application.put_env(:wallaby, :base_url, MultipsterWeb.Endpoint.url())

@@ -7,7 +7,7 @@ defmodule MultipsterWeb.SignIn.Attempt do
   import Ecto.Changeset
 
   embedded_schema do
-    field :email
+    field(:email)
   end
 
   def changeset(attrs) do
