@@ -18,11 +18,8 @@ config :multipster, Multipster.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :wallaby,
-  driver: Wallaby.Experimental.Chrome
+config :wallaby, driver: Wallaby.Experimental.Chrome
 
-config :multipster, MultipsterWeb.Mailer,
-  adapter: Bamboo.TestAdapter
+config :multipster, MultipsterWeb.Mailer, adapter: Bamboo.TestAdapter
 
-config :multipster, Multipster.CurrentTime,
-  adapter: Multipster.CurrentTime.Mock
+config :multipster, Multipster.CurrentTime, adapter: Multipster.CurrentTime.Mock
